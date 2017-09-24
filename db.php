@@ -1,8 +1,8 @@
 <?php
 
-$koneksi = mysqli_connect ("localhost","root","","belajar_loginapp")
+$koneksi = mysqli_connect ("localhost","root","","belajar_loginapp");
 
-if(!koneksi)
+if(!$koneksi)
 {
 	echo"Connection failed";
 }
