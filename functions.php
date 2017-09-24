@@ -9,7 +9,7 @@ function showAllUserId()
 
 	if(!$result)
 	{
-		die("Query Failed" . mysqli_error($koneksi);
+		die("Query Failed" . mysqli_error($koneksi));
 	}
 
 	while($row = mysqli_fetch_assoc($result))

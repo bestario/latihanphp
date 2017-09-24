@@ -1,14 +1,28 @@
+<?php include "db.php";?>
+<?php include "functions.php";?>
+
 <?php
-include "db.php";
 
-$query = "SELECT * FROM users";
-$result = mysqli_query($koneksi,$query);
-
-if(!$result)
+if(isset($_POST['submit']))
 {
-	die("Query Failed" . mysqli_error($koneksi));
+	$id = $_POST['id'];
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+
+	$query = "UPDATE users 
+			  SET username = '$username',
+			  	  password = '$password',
+			  WHERE id = '$id'";
+	$result = mysqli_query($koneksi,$query);
+
+	if(!$result)
+	{
+		die("Query Failed");
+	}
 }
+
 ?>
+
 
 <html>
 <head>
@@ -19,7 +33,7 @@ if(!$result)
 
 <div class = "container">
 	<div class = "col-md-6">
-		<form action = "login_create.php" method = "post">
+		<form action = "login_update.php" method = "post">
 			<div class = "form-group">
 				<label for = "username">Username</label>
 				<input type = "text" name = "username" class = "form-control">
@@ -31,11 +45,8 @@ if(!$result)
 			<div class = "from-group">
 			 	<select name ="id" class= "form-control">
 			 		<?php
-			 			while($row = mysqli_fetch_assoc($result))
-			 			{
-			 				$id = $row['id'];
-			 				echo "<option value = '$id'>$id</option>";
-			 			}
+			 			showAllUserId();
+
 			 		?>
 			 	</select>
 			 </div>
