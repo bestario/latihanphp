@@ -3,10 +3,10 @@
 ?>
 
 <form action = "proses_matakuliah.php?action=<?php echo $_GET['action']; ?>" method="post">
-	Kode Dosen:
+	Kode Mata Kuliah:
 	<input type="text" name="kode_matkul" value=""/>
 	<br/>
-	Nama Dosen:
+	Nama Mata Kuliah:
 	<input type="text" name="nama" value=""/>
 	<br/>
 	<input type="submit" name="submit" />
