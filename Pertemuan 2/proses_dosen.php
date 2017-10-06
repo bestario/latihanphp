@@ -11,6 +11,10 @@
 		//2.Query
 		$query = "UPDATE dosen SET kode_dosen = '$_POST[kode_dosen]', nama = '$_POST[nama]' WHERE id=$_POST[id]";
 	}
+	else if($_GET['action'] == "delete")
+	{
+		$query = "DELETE FROM dosen WHERE id = $_GET[id]";
+	}
 
 	mysqli_query ($koneksi, $query);
 	
