@@ -25,8 +25,8 @@
 			<td><?php echo $row['kode_matkul']; ?></td>
 			<td><?php echo $row['nama']; ?></td>
 			<td>
-				<a href="template.php?page=formdosen&id= <?php echo $row['id'];?> &action=edit">Edit</a>
-				<a href="proses_dosen.php?action=delete&id= <?php echo $row['id'];?> ">Delete</a>
+				<a href="template.php?page=formmatakuliah&id= <?php echo $row['id'];?> &action=edit">Edit</a>
+				<a href="proses_matakuliah.php?action=delete&id= <?php echo $row['id'];?> ">Delete</a>
 			</td>
 		</tr>
 		<?php

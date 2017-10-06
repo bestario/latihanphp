@@ -6,6 +6,11 @@
 		//2. Query
 		$query ="INSERT INTO matakuliah (kode_matkul, nama) VALUES ('$_POST[kode_matkul]', '$_POST[nama]')";
 	}
+	else if($_GET['action'] == "edit")
+	{
+		//2.Query
+		$query = "UPDATE matakuliah SET kode_matkul = '$_POST[kode_matkul]', nama = '$_POST[nama]' WHERE id=$_POST[id]";
+	}
 
 	mysqli_query ($koneksi, $query);
 	
