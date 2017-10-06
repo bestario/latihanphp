@@ -11,6 +11,10 @@
 		//2.Query
 		$query = "UPDATE matakuliah SET kode_matkul = '$_POST[kode_matkul]', nama = '$_POST[nama]' WHERE id=$_POST[id]";
 	}
+	else if($_GET['action'] == "delete")
+	{
+		$query = "DELETE FROM matakuliah WHERE id = $_GET[id]";
+	}
 
 	mysqli_query ($koneksi, $query);
 	
