@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 //2. Query 
 $query = "SELECT * FROM kontak
-		  WHERE id=$id";
+		  WHERE id_kontak=$id";
 $hasil = mysqli_query($db, $query);
 
 //3. Tampil 
@@ -28,6 +28,7 @@ $row = mysqli_fetch_assoc($hasil);
 <div id="konten">
 	<h2>Edit Kontak</h2>
 	<form action="proses_edit_kontak.php" method="post">
+	
 		Nama:
 		<input type="text" value="<?php echo $row['nama'] ?>" name="nama" />
 		<br />
@@ -43,11 +44,12 @@ $row = mysqli_fetch_assoc($hasil);
    		$result = mysqli_query($db, $sql);
 		echo "<select name='kategori'>";
    		while ($row = mysqli_fetch_array($result)) {
-        echo "<option value='" . $row['id'] ."'>" . $row['keterangan'] ."</option>";
+        echo "<option value='" . $row['id_kategori'] ."'>" . $row['keterangan'] ."</option>";
         }
         echo "</select>";
         ?>
 		<br />
+		<input type="hidden" name="id" value="<?php echo $row['id'] ?>" />
 		<input type="submit" value="Simpan" />
 	</form>
 </div>

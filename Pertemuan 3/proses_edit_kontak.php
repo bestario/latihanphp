@@ -7,15 +7,13 @@ $id = $_POST['id'];
 $nm = mysqli_escape_string($db,$_POST['nama']);
 $ph = mysqli_escape_string($db,$_POST['phone']);
 $em = mysqli_escape_string($db,$_POST['email']);
-$kategori = $_GET['kategori'];
-
+$kategori =  mysqli_real_escape_string($db, $_POST['kategori']);
 //2. Query 
 $query = "UPDATE kontak 
 		  SET nama = '$nm',
-		  phone = '$ph',
-		  email = '$em',
-		  kategori = '$kategori'
-		  WHERE id=$id";
+			  phone = '$ph',
+		   	  email = '$em',
+		      kategori = '$kategori' WHERE id_kontak=$id";
 mysqli_query($db, $query);
 
 header('Location: index.php');

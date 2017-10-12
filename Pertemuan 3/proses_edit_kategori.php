@@ -9,7 +9,7 @@ $ket = mysqli_real_escape_string($db, $_POST['ket']);
 //2. Query 
 $query = "UPDATE kategori 
 		  SET keterangan = '$ket'
-		  WHERE id=$id";
+		  WHERE id_kategori=$id";
 mysqli_query($db, $query);
 
 header('Location: kategori.php');

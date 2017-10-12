@@ -42,8 +42,8 @@ $hasil = mysqli_query($db, $query);
 				<td><?php echo $row['keterangan']; ?></td>
 				<td>
 					
-					<a href="form_edit_kategori.php?id=<?php echo $row['id']; ?>">Edit</a> | 
-					<a href="delete_kategori.php?id=<?php echo $row['id']; ?>">Delete</a>
+					<a href="form_edit_kategori.php?id=<?php echo $row['id_kategori']; ?>">Edit</a> | 
+					<a href="delete_kategori.php?id=<?php echo $row['id_kategori']; ?>">Delete</a>
 				</td>
 			</tr>
 			<?php

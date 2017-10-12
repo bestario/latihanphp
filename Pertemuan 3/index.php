@@ -5,14 +5,14 @@
 	{
 		$query = "SELECT * FROM Kontak 
 		INNER JOIN kategori 
-		ON kontak.kategori = kategori.id 
+		ON kontak.id_kategori = kategori.id_kategori
 		WHERE kategori = $_POST[kategori]";
 	}
 	else
 	{
 		$query = "SELECT * FROM Kontak 
 		INNER JOIN kategori 
-		ON kontak.kategori = kategori.id";
+		ON kontak.id_kategori = kategori.id_kategori";
 	}
 	
 	$hasil = mysqli_query($db, $query);
@@ -85,10 +85,10 @@
 				<td><?php echo $row['nama']; ?></td>
 				<td><?php echo $row['hp']; ?></td>
 				<td><?php echo $row['email']; ?></td>
-				<td><?php echo $row['kategori']; ?></td>
+				<td><?php echo $row['id_kategori']; ?></td>
 				<td>
-					<a href="form_edit_kontak.php?id=<?php echo $row['id']; ?>">Edit</a> | 
-					<a href="delete_kontak.php?id=<?php echo $row['id']; ?>">Delete</a>
+					<a href="form_edit_kontak.php?id=<?php echo $row['id_kontak']; ?>">Edit</a> | 
+					<a href="delete_kontak.php?id=<?php echo $row['id_kontak']; ?>">Delete</a>
 				</td>
 			</tr>
 			<?php

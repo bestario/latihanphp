@@ -6,7 +6,7 @@ $id = $_GET['id'];
 
 //2. Query 
 $query = "DELETE FROM kategori
-		  WHERE id=$id";
+		  WHERE id_kategori=$id";
 
 mysqli_query($db, $query);
 

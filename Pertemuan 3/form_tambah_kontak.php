@@ -33,7 +33,7 @@ include ("koneksi.php");
    		$result = mysqli_query($db, $sql);
 		echo "<select name='kategori'>";
    		while ($row = mysqli_fetch_array($result)) {
-        echo "<option value='" . $row['id'] ."'>" . $row['keterangan'] ."</option>";
+        echo "<option value='" . $row['id_kategori'] ."'>" . $row['keterangan'] ."</option>";
         }
         echo "</select>";
         ?>

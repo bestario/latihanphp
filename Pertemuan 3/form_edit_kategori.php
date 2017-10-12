@@ -5,8 +5,8 @@ include("koneksi.php");
 $id = $_GET['id'];
 
 //2. Query 
-$query = "SELECT * FROM kontak 
-		  WHERE id=$id";
+$query = "SELECT * FROM kategori
+		  WHERE id_kategori=$id";
 $hasil = mysqli_query($db, $query);
 
 //3. Tampil 
@@ -30,7 +30,7 @@ $row = mysqli_fetch_assoc($hasil);
 	<h2>Edit Kategori</h2>
 	<form action="proses_edit_kategori.php" method="post">
 		Keterangan:
-		<input type="text" value="<?php echo $row['keterangan'] ?>" name="ket" />
+		<input type="text" value="<?php echo $row['keterangan']; ?>" name="ket" />
 		<br />
 		<input type="hidden" name="id" value="<?php echo $row['id'] ?>" />
 		<input type="submit" value="Simpan" />
