@@ -10,6 +10,8 @@ $ket = mysqli_real_escape_string($db, $_POST['ket']);
 $query = "UPDATE kategori 
 		  SET keterangan = '$ket'
 		  WHERE id_kategori=$id";
-mysqli_query($db, $query);
-
+$hasil=mysqli_query($db, $query);
+        if($hasil === FALSE) { 
+        die(mysqli_error($db)); // better error handling
+    }
 header('Location: kategori.php');

@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($hasil);
 		<input type="text" value="<?php echo $row['hp'] ?>" name="phone" />
 		<br />
 		Email:
-		<input type="text" value="<?php echo $row['email'] ?>" name="Email" />
+		<input type="text" value="<?php echo $row['email'] ?>" name="email" />
 		<br />
 		Kategori:
 		<?php

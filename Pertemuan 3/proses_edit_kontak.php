@@ -11,9 +11,11 @@ $kategori =  mysqli_real_escape_string($db, $_POST['kategori']);
 //2. Query 
 $query = "UPDATE kontak 
 		  SET nama = '$nm',
-			  phone = '$ph',
+			  hp = '$ph',
 		   	  email = '$em',
-		      kategori = '$kategori' WHERE id_kontak=$id";
-mysqli_query($db, $query);
-
+		      id_kategori = '$kategori' WHERE id_kontak=$id";
+$hasil=mysqli_query($db, $query);
+        if($hasil === FALSE) { 
+        die(mysqli_error($db)); // better error handling
+    }
 header('Location: index.php');
