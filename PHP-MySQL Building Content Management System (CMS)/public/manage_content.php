@@ -1,6 +1,18 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
+<?php
+	if (isset($_GET["subject"])){
+		$selected_subject_id = $_GET["subject"];
+		$selected_page_id = null;
+	} elseif (isset($_GET["page"])) {
+		$selected_page_id = $_GET["page"];
+		$selected_subject_id = null;
+	} else{
+		$selected_subject_id = null;
+		$selected_page_id = null;
+	}
+?>
 <div id="main">
 	<div id="navigation">
 		<ul class ="subjects">
@@ -13,7 +25,7 @@
 				{
 			?>
 				<li>
-				<?php echo $subject["menu_name"]; ?>
+				<a href="manage_content.php?subject=<?php echo urlencode($subject["id"]); ?>"><?php echo $subject["menu_name"]; ?></a>
 					<?php
 						$page_set = find_pages_for_subject($subject["id"]);
 					?>
@@ -24,7 +36,7 @@
 							{
 						?>
 							<li>
-							<?php echo $page["menu_name"];?>
+							<a href="manage_content.php?page=<?php echo urlencode($page["id"]); ?>"><?php echo $page["menu_name"];?></a>
 							</li>
 						<?php
 							}
@@ -40,6 +52,8 @@
 	</div>
 	<div id="page">
 	<h2>Manage Content</h2>
+	<?php echo $selected_subject_id; ?> <br/>
+	<?php echo $selected_page_id; ?>
 	</div>
 </div>
 
