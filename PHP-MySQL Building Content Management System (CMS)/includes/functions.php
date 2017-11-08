@@ -1,4 +1,14 @@
 <?php
+function redirect_to($new_location){
+	header("Location: " . $new_location);
+	exit;
+}
+function mysql_prep($string){
+	global $connection;
+
+	$escaped_string = mysqli_real_escape_string($connection, $string);
+	return $escaped_string;
+}
 
 function confirm_query($result_set) {
 	if (!$result_set) {
@@ -37,14 +47,14 @@ function navigation($subject_array, $page_array){
 		{
 			$output .= "<li";
 			if ($subject_array && $subject["id"] == $subject_array["id"]) {
-				$output .= " class=\"selected\">"; 
+				$output .= " class=\"selected\""; 
 			}
 			$output .= ">";
 			$output .= "<a href=\"manage_content.php?subject=";
 			$output .= urlencode($subject["id"]);
 			$output .= "\">";
 			$output .= $subject["menu_name"]; 
-			$output .= "<\a>";
+			//$output .= "<\a>";
 
 			$page_set = find_pages_for_subject($subject["id"]);
 			$output .=	"<ul class=\"pages\">";

@@ -10,11 +10,11 @@
 	<a href="new_subject.php">+ Add Subject</a>
 	</div>
 	<div id="page">
-		<?php if($selected_subject_id) { ?>
+		<?php if($current_subject) { ?>
 			<h2>Manage Subject</h2>
 				Menu Name : <?php echo $current_subject["menu_name"]; ?> <br/>
 
-		<?php } elseif ($selected_page_id) { ?>
+		<?php } elseif ($current_page) { ?>
 			<h2>Manage Page</h2>
 				Menu Name : <?php echo $current_page["menu_name"]; ?> <br/>
 
