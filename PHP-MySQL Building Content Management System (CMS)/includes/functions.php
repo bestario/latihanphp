@@ -54,10 +54,11 @@ function navigation($subject_array, $page_array){
 			$output .= urlencode($subject["id"]);
 			$output .= "\">";
 			$output .= $subject["menu_name"]; 
-			//$output .= "<\a>";
+		//	$output .= "<\a>";
 
 			$page_set = find_pages_for_subject($subject["id"]);
 			$output .=	"<ul class=\"pages\">";
+
 
 			while ($page = mysqli_fetch_assoc($page_set)) 
 				{
