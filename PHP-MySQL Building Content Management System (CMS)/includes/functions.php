@@ -23,7 +23,9 @@ function form_errors($errors=array()) {
 		$output .= "Please fix the following errors:";
 		$output .= "<ul>";
 		foreach ($errors as $key => $error) {
-			$output .= "<li>{$error}</li>";
+			$output .= "<li>";
+			$output .= htmlentities($error);
+			$output .="</li>";
 		}
 		$output .= "</ul>";
 		$output .= "</div>";
@@ -35,7 +37,7 @@ function find_all_subjects(){
 	global $connection;
 	$query = "SELECT * ";
 	$query .= "FROM subjects ";
-//	$query .= "WHERE visible = 1 ";
+
 	$query .= "ORDER by position ASC";
 	$subject_set = mysqli_query($connection, $query);
 	confirm_query($subject_set);
