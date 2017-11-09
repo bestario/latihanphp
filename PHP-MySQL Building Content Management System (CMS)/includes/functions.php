@@ -66,7 +66,7 @@ function navigation($subject_array, $page_array){
 			if ($subject_array && $subject["id"] == $subject_array["id"]) {
 				$output .= " class=\"selected\""; 
 			}
-			$output .= "><a href=\"edit_subject.php?subject=" . urlencode( $subject["id"] ) . "\">{$subject["menu_name"]}</a></li>";
+			$output .= "><a href=\"manage_content.php?subject=" . urlencode( $subject["id"] ) . "\">{$subject["menu_name"]}</a></li>";
 
 			$page_set = find_pages_for_subject($subject["id"]);
 			$output .=	"<ul class=\"pages\">";
@@ -87,6 +87,47 @@ function navigation($subject_array, $page_array){
 			}
 			mysqli_free_result($page_set);	
 			$output .= "</ul></li>";
+		}
+			mysqli_free_result($subject_set);
+			$output .= "</ul>";
+			return $output;
+}
+function public_navigation($subject_array, $page_array){
+	$output = "<ul class =\"subjects\">";
+	$subject_set = find_all_subjects();
+	while ($subject = mysqli_fetch_assoc($subject_set)) 
+		{
+			$output .= "<li";
+			if ($subject_array && $subject["id"] == $subject_array["id"]) {
+				$output .= " class=\"selected\""; 
+			}
+			$output .= "><a href=\"index.php?subject=" . urlencode( $subject["id"] ) . "\">{$subject["menu_name"]}</a></li>";
+
+			if($subject_array["id"] == $subject["id"] || 
+			$page_array["subject_id"] == $subject["id"]) 
+			{
+				$page_set = find_pages_for_subject($subject["id"]);
+				$output .=	"<ul class=\"pages\">";
+
+
+				while ($page = mysqli_fetch_assoc($page_set)) 
+					{
+						$output .= "<li";
+						if ($page_array && $page["id"] == $page_array["id"]) {
+							$output .= " class=\"selected\""; 
+					}
+					$output .= ">";
+					$output .= "<a href=\"index.php?page=";
+					$output .= urlencode($page["id"]);
+					$output .= "\">";
+					$output .= $page["menu_name"];
+					$output .= "</a></li>";
+				}
+				$output .= "</ul>";
+				mysqli_free_result($page_set);	
+			}
+
+			$output .= "</li>";
 		}
 			mysqli_free_result($subject_set);
 			$output .= "</ul>";
