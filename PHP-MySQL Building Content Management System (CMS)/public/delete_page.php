@@ -4,7 +4,7 @@
 <?php find_selected_page(); ?>
 
 <?php
-	$current_page = find_page_by_id($_GET["page"]);
+	$current_page = find_page_by_id($_GET["page"], false);
 	if (!$current_subject) {
 		// subject ID was missing or invalid or
 		// subject couldnt be found in database
