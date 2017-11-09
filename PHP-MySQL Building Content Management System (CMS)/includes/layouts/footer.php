@@ -1,5 +1,7 @@
-<div id="footer"> Copyright <?php echo date("Y"); ?>, Widget_Corp</div>
-	</body>
+<div id="footer"> 
+	Copyright <?php echo date("Y"); ?>, Widget_Corp
+</div>
+	</body> 
 </html>
 <?php
 //5. Close database connection
