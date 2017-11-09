@@ -10,4 +10,12 @@ function message(){
 		return $output;
 	}
 }
+
+function errors(){
+	if(isset($_SESSION["errors"])){
+		$output = $_SESSION["errors"];
+		$_SESSION["errors"] = null;
+		return $errors;
+	}
+}
 ?>

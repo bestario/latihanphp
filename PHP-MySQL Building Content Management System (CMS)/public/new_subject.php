@@ -11,6 +11,9 @@
 	<div id="page">
 	</a>
 	<?php echo message();?>
+	<?php $errors = errors(); ?>
+	<?php echo form_errors($errors); ?>
+	
 	<h2>Create Subject</h2>
 	<form action = "create_subject.php" method="post">
 		<p>Menu Name :
