@@ -33,25 +33,29 @@ function form_errors($errors=array()) {
 	return $output;
 }
 
-function find_all_subjects(){
+function find_all_subjects($public=true){
 	global $connection;
 	$query = "SELECT * ";
 	$query .= "FROM subjects ";
-
+	if ($public){
+		$query .= "WHERE visible =1 ";
+	}
 	$query .= "ORDER by position ASC";
 	$subject_set = mysqli_query($connection, $query);
 	confirm_query($subject_set);
 	return $subject_set;
 }
-function find_pages_for_subject($subject_id){
+function find_pages_for_subject($subject_id, $public=true){
 	global $connection;
 
 	$safe_subject_id = mysqli_real_escape_string($connection, $subject_id);
 
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
-	$query .= "WHERE visible = 1 ";
-	$query .= "AND subject_id= {$safe_subject_id} ";
+	$query .= "WHERE subject_id= {$safe_subject_id} ";
+	if ($public){
+		$query .= "AND visible = 1 ";
+	}
 	$query .= "ORDER by position ASC";
 	$page_set = mysqli_query($connection, $query);
 	confirm_query($page_set);
@@ -59,7 +63,7 @@ function find_pages_for_subject($subject_id){
 }
 function navigation($subject_array, $page_array){
 	$output = "<ul class =\"subjects\">";
-	$subject_set = find_all_subjects();
+	$subject_set = find_all_subjects(false);
 	while ($subject = mysqli_fetch_assoc($subject_set)) 
 		{
 			$output .= "<li";
@@ -68,7 +72,7 @@ function navigation($subject_array, $page_array){
 			}
 			$output .= "><a href=\"manage_content.php?subject=" . urlencode( $subject["id"] ) . "\">{$subject["menu_name"]}</a></li>";
 
-			$page_set = find_pages_for_subject($subject["id"]);
+			$page_set = find_pages_for_subject($subject["id"], false);
 			$output .=	"<ul class=\"pages\">";
 
 
