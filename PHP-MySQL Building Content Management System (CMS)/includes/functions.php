@@ -64,12 +64,7 @@ function navigation($subject_array, $page_array){
 			if ($subject_array && $subject["id"] == $subject_array["id"]) {
 				$output .= " class=\"selected\""; 
 			}
-			$output .= ">";
-			$output .= "<a href=\"manage_content.php?subject=";
-			$output .= urlencode($subject["id"]);
-			$output .= "\">";
-			$output .= $subject["menu_name"]; 
-		//	$output .= "<\a>";
+			$output .= "><a href=\"edit_subject.php?subject=" . urlencode( $subject["id"] ) . "\">{$subject["menu_name"]}</a></li>";
 
 			$page_set = find_pages_for_subject($subject["id"]);
 			$output .=	"<ul class=\"pages\">";
